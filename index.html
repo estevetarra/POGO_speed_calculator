@@ -2,9 +2,7 @@
 <html>
 <body>
 
-<p>Click the button to start tracking your distance.</p>
-
-<button onclick="startLocating()"> Start getting pos</button>
+<button id='button' onclick="startLocating()"> Click the button to start tracking your distance</button>
 <p id='initial'></p>
 <p id="now"></p>
 <p id='info'></p>
@@ -25,6 +23,7 @@ function startLocating() {
         var d = new Date();
         starttime = d.getTime();
         setInterval(getLocation,60*1000);
+        document.getElementById("button").style.display = "none";
 
     } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
@@ -60,7 +59,7 @@ function showStart(position) {
 
 function showPosition(position) {
     end = position;
-    now.innerHTML = "Initial position" +
+    now.innerHTML = "Now position" +
     "<br>Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
     showInfo();
