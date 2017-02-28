@@ -53,7 +53,7 @@ function startLocating() {
         start = navigator.geolocation.getCurrentPosition(showStart);
         var d = new Date();
         starttime = d.getTime();
-        setInterval(getLocation,60*1000);
+        setInterval(getLocation,20*1000);
         document.getElementById("button").style.display = "none";
 
     } else {
@@ -75,8 +75,10 @@ function showInfo() {
   var endtime = d.getTime();
   var distance = calcCrow(start.coords.latitude, start.coords.longitude, end.coords.latitude, end.coords.longitude);
   var speed = distance *  1000  * 3600 / (endtime - starttime) ;
+  var finishtime = starttime +  distance *  1000  * 3600 / 10.5;
   info.innerHTML =  "Distance (km): " + distance +
-  "<br>Speed: " +speed;
+  "<br>Speed (km/h): " +speed +
+  "<br>Time remaing (s): " + Math.floor((finishtime - endtime )/1000);
 
 
 }
