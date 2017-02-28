@@ -23,10 +23,10 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <h2 id='initial'></h2>
+          <h3 id='initial'></h3>
         </div>
         <div class="col-md-4">
-          <h2 id="now"></h2>
+          <h3 id="now"></h3>
         </div>
         <div class="col-md-4">
           <h2 id='info'></h2>
@@ -85,14 +85,14 @@ function showInfo() {
 
 function showStart(position) {
     start = position;
-    initial.innerHTML = "Initial position" +
+    initial.innerHTML = "Initial position:" +
     "<br>Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
 }
 
 function showPosition(position) {
     end = position;
-    now.innerHTML = "Now position" +
+    now.innerHTML = "Now position:" +
     "<br>Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
     showInfo();
