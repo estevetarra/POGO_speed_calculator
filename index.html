@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="startLocating()"> Start getting pos</button>
+<p id='initial'></p>
+<p id="now"></p>
+<p id='info'></p>
+
+<script>
+var initial = document.getElementById("initial");
+var now = document.getElementById("now");
+var info = document.getElementById("info");
+var start;
+var end;
+var starttime;
+
+
+
+function startLocating() {
+    if (navigator.geolocation) {
+        start = navigator.geolocation.getCurrentPosition(showStart);
+        var d = new Date();
+        starttime = d.getTime();
+        setInterval(getLocation,60*1000);
+
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showInfo() {
+// number of milliseconds
+  var d = new Date();
+  var endtime = d.getTime();
+  var distance = calcCrow(start.coords.latitude, start.coords.longitude, end.coords.latitude, end.coords.longitude);
+  var speed = distance *  1000  * 3600 / (endtime - starttime) ;
+  info.innerHTML =  "Distance (km): " + distance +
+  "<br>Speed: " +speed;
+
+
+}
+
+function showStart(position) {
+    start = position;
+    initial.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+}
+
+function showPosition(position) {
+    end = position;
+    now.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+    showInfo();
+
+}
+
+//This function takes in latitude and longitude of two location and returns the distance between them as the crow flies (in km)
+function calcCrow(lat1, lon1, lat2, lon2)
+{
+  var R = 6371; // km
+  var dLat = toRad(lat2-lat1);
+  var dLon = toRad(lon2-lon1);
+  var lat1 = toRad(lat1);
+  var lat2 = toRad(lat2);
+
+  var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var d = R * c;
+  return d;
+}
+
+// Converts numeric degrees to radians
+function toRad(Value)
+{
+    return Value * Math.PI / 180;
+}
+</script>
+
+</body>
+</html>
