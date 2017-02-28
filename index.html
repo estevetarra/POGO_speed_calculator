@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<p>Click the button to get your coordinates.</p>
+<p>Click the button to start tracking your distance.</p>
 
 <button onclick="startLocating()"> Start getting pos</button>
 <p id='initial'></p>
@@ -53,13 +53,15 @@ function showInfo() {
 
 function showStart(position) {
     start = position;
-    initial.innerHTML = "Latitude: " + position.coords.latitude +
+    initial.innerHTML = "Initial position" +
+    "<br>Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
 }
 
 function showPosition(position) {
     end = position;
-    now.innerHTML = "Latitude: " + position.coords.latitude +
+    now.innerHTML = "Initial position" +
+    "<br>Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
     showInfo();
 
