@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
 
-<head>
-  <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="  crossorigin="anonymous"></script>
-  
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Bootstrap -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<body>
-  <div class="jumbotron">
-<div class="btn-group text-center" role="group">
-  <button id='button'  type="button" class="btn btn-primary btn-lg" onclick="startLocating()" style="font-size : 40px; width: 100%; height: 100px;"> Click me to start tracking your distance and speed</button>
-  </div>
-
-    <div class="col-md-4">
-      <h1 id='initial'></h1>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body style="font-size:25px">
+    <div class="container">
+      <div class="btn-group text-center" role="group">
+        <button id='button'  type="button" class="btn btn-primary btn-lg" onclick="startLocating()" style="font-size : 40px; width: 100%; height: 100px;"> Click me to start tracking your distance and speed</button>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h1 id='initial'></h1>
+        </div>
+        <div class="col-md-4">
+          <h1 id="now"></h1>
+        </div>
+        <div class="col-md-4">
+          <h1 id='info'></h1>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4">
-
-      <h1 id="now"></h1>
-    </div>
-    <div class="col-md-4">
-
-      <h1 id='info'></h1>
-    </div>
-  </div>
-
-<script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    
+    <script>
 var initial = document.getElementById("initial");
 var now = document.getElementById("now");
 var info = document.getElementById("info");
@@ -115,5 +120,6 @@ function toRad(Value)
 }
 </script>
 
-</body>
+  
+  </body>
 </html>
