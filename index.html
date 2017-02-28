@@ -19,7 +19,7 @@
   <body style="font-size:25px">
     <div class="container">
       <div class="btn-group text-center" role="group">
-        <button id='button'  type="button" class="btn btn-primary btn-lg" onclick="startLocating()" style="font-size : 40px; width: 100%; height: 100px;"> Click me to start tracking your distance and speed</button>
+        <button id='button'  type="button" class="btn btn-primary btn-lg" onclick="startLocating()"> Click me to start tracking your distance and speed</button>
       </div>
       <div class="row">
         <div class="col-md-4">
@@ -53,7 +53,7 @@ function startLocating() {
         start = navigator.geolocation.getCurrentPosition(showStart);
         var d = new Date();
         starttime = d.getTime();
-        setInterval(getLocation,20*1000);
+        setInterval(getLocation,30*1000);
         document.getElementById("button").style.display = "none";
 
     } else {
