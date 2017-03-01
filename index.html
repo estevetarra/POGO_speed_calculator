@@ -1,33 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
 
-<head>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Bootstrap -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
-<body>
-  <button id='button'  type="button" class="btn btn-primary btn-lg" onclick="startLocating()"> Click me to start tracking your distance and speed</button>
-
-
-    <div class="col-md-4">
-      <p id='initial'></p>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--style>
+body {
+    background-color: lightblue;
+}
+</style-->
+  </head>
+  <body style="font-size:25px">
+    <div class="container">
+      <div class="btn-group text-center" role="group">
+        <button id='button'  type="button" class="btn btn-primary btn-lg" onclick="startLocating()"> Click me to start tracking your distance and speed</button>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <h3 id='initial'></h3>
+        </div>
+        <div class="col-md-4">
+          <h3 id="now"></h3>
+        </div>
+        <div class="col-md-4">
+          <h2 id='info'></h2>
+        </div>
+      </div>
     </div>
-    <div class="col-md-4">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-      <p id="now"></p>
-    </div>
-    <div class="col-md-4">
-
-      <p id='info'></p>
-    </div>
-
-<script>
+    <script>
 var initial = document.getElementById("initial");
 var now = document.getElementById("now");
 var info = document.getElementById("info");
@@ -42,7 +58,7 @@ function startLocating() {
         start = navigator.geolocation.getCurrentPosition(showStart);
         var d = new Date();
         starttime = d.getTime();
-        setInterval(getLocation,60*1000);
+        setInterval(getLocation,30*1000);
         document.getElementById("button").style.display = "none";
 
     } else {
@@ -64,21 +80,23 @@ function showInfo() {
   var endtime = d.getTime();
   var distance = calcCrow(start.coords.latitude, start.coords.longitude, end.coords.latitude, end.coords.longitude);
   var speed = distance *  1000  * 3600 / (endtime - starttime) ;
+  var finishtime = starttime +  distance *  1000  * 3600 / 10.5;
   info.innerHTML =  "Distance (km): " + distance +
-  "<br>Speed: " +speed;
+  "<br>Speed (km/h): " +speed +
+  "<br>Time remaing (s): " + Math.floor((finishtime - endtime )/1000);
   $(body).css("background-color","blue");
 }
 
 function showStart(position) {
     start = position;
-    initial.innerHTML = "Initial position" +
+    initial.innerHTML = "Initial position:" +
     "<br>Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
 }
 
 function showPosition(position) {
     end = position;
-    now.innerHTML = "Now position" +
+    now.innerHTML = "Now position:" +
     "<br>Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude;
     showInfo();
@@ -108,5 +126,6 @@ function toRad(Value)
 }
 </script>
 
-</body>
+
+  </body>
 </html>
