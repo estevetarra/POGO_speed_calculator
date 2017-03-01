@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title> POGO speed calculator</title>
 
     <!-- Bootstrap -->
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,8 +22,8 @@ body {
 }
 </style-->
   </head>
-  <body style="font-size:25px" id="body">
-    <div class="container">
+  <body style="font-size:25px" >
+    <div class="container" id="co">
       <div class="btn-group text-center" role="group">
         <button id='button'  type="button" class="btn btn-primary btn-lg" onclick="startLocating()"> Click me to start tracking your distance and speed</button>
       </div>
@@ -34,14 +35,15 @@ body {
           <h3 id="now"></h3>
         </div>
         <div class="col-md-4">
-          <h2 id='info'></h2>
+          <h2 id='info' style="color:white;"></h2>
         </div>
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
     <script>
 var initial = document.getElementById("initial");
@@ -84,7 +86,8 @@ function showInfo() {
   info.innerHTML =  "Distance (km): " + distance +
   "<br>Speed (km/h): " +speed +
   "<br>Time remaing (s): " + Math.floor((finishtime - endtime )/1000);
-  $("#body").css("background-color","blue");
+  if (speed < 10.5) $("#co").css("background-color","Lime");
+  else $("#co").css("background-color","DarkSlateGray");
 }
 
 function showStart(position) {
