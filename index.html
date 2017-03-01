@@ -21,7 +21,7 @@ body {
 }
 </style-->
   </head>
-  <body style="font-size:25px">
+  <body style="font-size:25px" id="body">
     <div class="container">
       <div class="btn-group text-center" role="group">
         <button id='button'  type="button" class="btn btn-primary btn-lg" onclick="startLocating()"> Click me to start tracking your distance and speed</button>
@@ -84,7 +84,7 @@ function showInfo() {
   info.innerHTML =  "Distance (km): " + distance +
   "<br>Speed (km/h): " +speed +
   "<br>Time remaing (s): " + Math.floor((finishtime - endtime )/1000);
-  $(body).css("background-color","blue");
+  $("#body").css("background-color","blue");
 }
 
 function showStart(position) {
