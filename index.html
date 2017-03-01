@@ -66,8 +66,7 @@ function showInfo() {
   var speed = distance *  1000  * 3600 / (endtime - starttime) ;
   info.innerHTML =  "Distance (km): " + distance +
   "<br>Speed: " +speed;
-
-
+  $(body).css("background-color","blue");
 }
 
 function showStart(position) {
